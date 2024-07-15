@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
+/* src/App.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #45474B;
 }
 
-.App-logo {
-  height: 40vmin;
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 20px; /* Padding from the bottom edge */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar li {
+  margin: 0 15px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 10px; /* Rounded corners for list items */
+}
+
+.navbar li:hover {
+  background-color: #ff6347; /* Background color on hover */
+  color: #fff; /* Ensure text remains white */
+}
+
+.navbar li.active {
+  font-weight: bold;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  gap: 20px; /* Adjust padding between videos */
+  padding-top: 50px; /* Space for the navbar */
+}
+
+.middle-video {
+  flex: 2; /* Larger middle video */
+}
+
+.side-video {
+  flex: 1; /* Smaller side videos */
+}
+
+.ReactPlayer {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 8px 16px;
+  }
+  .navbar li {
+    margin: 0 10px;
+    padding: 8px 16px;
+  }
+
+  .video-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-video, .middle-video {
+    width: 100%;
+  }
+}
+
+.side-video {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  height: 500px;
+}
+
+.side-video.hidden {
+  opacity: 0;
+  transform: scale(0.95);
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.middle-video{
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  height: 500px;
 }
