@@ -3,52 +3,49 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #45474B;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .App {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.intro {
+  height: 100vh; /* Full height section to take up the initial screen */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.navbar {
-  position: fixed;
-  bottom: 20px; /* Padding from the bottom edge */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  padding: 10px 20px;
-  border-radius: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
-
-.navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.video-section {
+  min-height: 100vh; /* Ensure it takes up full screen height */
   display: flex;
+  flex-direction: column;
   justify-content: center;
-}
-
-.navbar li {
-  margin: 0 15px;
-  padding: 10px 20px;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  border-radius: 10px; /* Rounded corners for list items */
-}
-
-.navbar li:hover {
-  background-color: #ff6347; /* Background color on hover */
-  color: #fff; /* Ensure text remains white */
-}
-
-.navbar li.active {
-  font-weight: bold;
+  align-items: center;
 }
 
 .video-container {
@@ -58,15 +55,19 @@ body {
   width: 90%;
   max-width: 1200px;
   gap: 20px; /* Adjust padding between videos */
-  padding-top: 50px; /* Space for the navbar */
 }
 
 .middle-video {
   flex: 2; /* Larger middle video */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px; /* Ensure it has a height */
 }
 
 .side-video {
   flex: 1; /* Smaller side videos */
+  height: 500px;
 }
 
 .ReactPlayer {
@@ -97,7 +98,6 @@ body {
 
 .side-video {
   transition: opacity 0.5s ease, transform 0.5s ease;
-  height: 500px;
 }
 
 .side-video.hidden {
@@ -106,7 +106,6 @@ body {
   pointer-events: none;
 }
 
-.middle-video{
+.middle-video {
   transition: opacity 0.5s ease, transform 0.5s ease;
-  height: 500px;
 }
