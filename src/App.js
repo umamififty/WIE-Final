@@ -1,35 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import Navbar from './navbar';
 import './App.css';
 import BackgroundVideo from './components/BackgroundVideo';
-import './navbar.css';
+import videoUrls from './videos.json'; // Ensure this path is correct
 
 function App() {
-  const [videoUrls, setVideoUrls] = useState({
-    middle: '',
-    side1: '',
-    side2: ''
-  });
-
   const [showSideVideo1, setShowSideVideo1] = useState(false);
   const [showSideVideo2, setShowSideVideo2] = useState(false);
   const [videoOpacity, setVideoOpacity] = useState(1);
   const [videoVolume, setVideoVolume] = useState(1);
+  const [playMiddleVideo, setPlayMiddleVideo] = useState(false);
+  const [mood, setMood] = useState('happy'); // Example mood state
 
+  const middleVideoRef = useRef(null);
+
+  // Effect for handling mood changes
   useEffect(() => {
-    fetch('/videos.json')
-      .then(response => response.json())
-      .then(data => {
-        const videoUrls = {
-          middle: data.playlists.happy[0], // Assuming 'happy' playlist for the middle video
-          side1: data.side1,
-          side2: data.side2
-        };
-        setVideoUrls(videoUrls);
-      })
-      .catch(error => console.error('Error fetching video URLs:', error));
+    console.log(`Mood changed to: ${mood}`);
+  }, [mood]);
 
+  // Effect for handling scroll and intersection observer
+  useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -43,8 +35,28 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
 
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setPlayMiddleVideo(true);
+          } else {
+            setPlayMiddleVideo(false);
+          }
+        });
+      },
+      { threshold: 1.0 } // Adjust threshold as needed
+    );
+
+    if (middleVideoRef.current) {
+      observer.observe(middleVideoRef.current);
+    }
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      if (middleVideoRef.current) {
+        observer.unobserve(middleVideoRef.current);
+      }
     };
   }, []);
 
@@ -56,10 +68,10 @@ function App() {
         toggleSideVideo1={() => setShowSideVideo1(!showSideVideo1)}
         showSideVideo2={showSideVideo2}
         toggleSideVideo2={() => setShowSideVideo2(!showSideVideo2)}
+        changeMood={setMood}
       />
       <div className="content">
         <div className="intro">
-          {/* Your initial content goes here */}
           <h1>諦めんなよ！</h1>
           <p>Scroll down to see the best contents.</p>
         </div>
@@ -68,10 +80,11 @@ function App() {
             <div className={`side-video ${!showSideVideo1 ? 'hidden' : ''}`}>
               <ReactPlayer url={videoUrls.side1} width="100%" height="100%" playing muted loop />
             </div>
-            <div className="middle-video">
+            <div className="middle-video" ref={middleVideoRef}>
               <ReactPlayer
-                url={videoUrls.middle}
-                playing
+                key={mood} // Ensure ReactPlayer updates when mood changes
+                url={videoUrls[mood]} // Ensure ReactPlayer updates when mood changes
+                playing={playMiddleVideo}
                 width="100%"
                 height="100%"
                 controls
