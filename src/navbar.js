@@ -14,10 +14,10 @@ const Navbar = ({
         <li className={showSideVideo1 ? 'active' : ''} onClick={toggleSideVideo1}>
           Toggle Side Video 1
         </li>
-        <li onClick={() => changeMood('happy')}>😊</li>
-        <li onClick={() => changeMood('angry')}>😡</li>
-        <li onClick={() => changeMood('motivation')}>💪</li>
-        <li onClick={() => changeMood('chill')}>😎🤙</li>
+        <li className='emoji' onClick={() => changeMood('happy')}>😊</li>
+        <li className='emoji' onClick={() => changeMood('angry')}>😡</li>
+        <li className='emoji' onClick={() => changeMood('motivation')}>💪</li>
+        <li className='emoji' onClick={() => changeMood('chill')}>😎</li>
         <li className={showSideVideo2 ? 'active' : ''} onClick={toggleSideVideo2}>
           Toggle Side Video 2
         </li>

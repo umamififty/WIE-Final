@@ -9,6 +9,7 @@
   border-radius: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  width: 70%;
 }
 
 .navbar ul {
@@ -20,7 +21,7 @@
 }
 
 .navbar ul li.emoji {
-  font-size: 30px;;
+  font-size: 40px;
 }
 
 .navbar li {
