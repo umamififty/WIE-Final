@@ -6,7 +6,7 @@ const Navbar = ({
   toggleSideVideo1, 
   showSideVideo2, 
   toggleSideVideo2, 
-  changeMood
+  changeMood 
 }) => {
   return (
     <div className="navbar">
@@ -14,10 +14,10 @@ const Navbar = ({
         <li className={showSideVideo1 ? 'active' : ''} onClick={toggleSideVideo1}>
           Toggle Side Video 1
         </li>
-        <li onClick={() => changeMood('happy')}>Happy</li>
-        <li onClick={() => changeMood('angry')}>Angry</li>
-        <li onClick={() => changeMood('motivation')}>Motivation</li>
-        <li onClick={() => changeMood('chill')}>Chill</li>
+        <li onClick={() => changeMood('happy')}>😊</li>
+        <li onClick={() => changeMood('angry')}>😡</li>
+        <li onClick={() => changeMood('motivation')}>💪</li>
+        <li onClick={() => changeMood('chill')}>😎🤙</li>
         <li className={showSideVideo2 ? 'active' : ''} onClick={toggleSideVideo2}>
           Toggle Side Video 2
         </li>

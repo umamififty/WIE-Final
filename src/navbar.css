@@ -19,6 +19,10 @@
   justify-content: center;
 }
 
+.navbar ul li.emoji {
+  font-size: 30px;;
+}
+
 .navbar li {
   margin: 0 15px;
   padding: 10px 20px;
