@@ -22,8 +22,15 @@ function UploadPage() {
   };
 
   const handleUpload = () => {
-    console.log('Uploading:', videoName, videoLink, category);
-    alert('Video uploaded! (not really, but this is where it would happen)');
+    const subject = `VIDEO SUBMISSION: ${category}`;
+    const body = `Title: ${videoName}\nLink: ${videoLink}\nCategory: ${category}`;
+    const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Open the default mail client
+    window.location.href = mailtoLink;
+
+    // Optional: Log to console or show a message
+    console.log('Opening mail client with subject and body:', subject, body);
   };
 
   const handleNavigate = () => {
