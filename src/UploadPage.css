@@ -1,10 +1,13 @@
-.upload-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #45474B;
+/* Remove any background video related styles */
+
+.navigate-button, .upload-button {
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white; /* Set the font color to white */
+  background-color: red; /* Initial color */
+  animation: blinkColors 0.5s infinite; /* Faster rate for blinking */
 }
 
 .navigate-button {
@@ -12,15 +15,31 @@
   top: 20px;
   left: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.navigate-button:hover {
-  background-color: #0056b3;
+.upload-button {
+  padding: 100px 200px;
+  font-size: 90px;
+  align-self: center;
+}
+
+@keyframes blinkColors {
+  0% { background-color: red; }
+  20% { background-color: orange; }
+  40% { background-color: yellow; }
+  60% { background-color: green; }
+  80% { background-color: blue; }
+  100% { background-color: purple; }
+}
+
+.upload-page {
+  position: relative; /* Ensure the upload page content is positioned above the video */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content */
+  justify-content: center; /* Center the content vertically */
+  height: 100vh; /* Full viewport height */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent overlay to ensure content readability */
 }
 
 h2 {
@@ -49,24 +68,16 @@ label {
 
 .input-field {
   width: 100%;
+  max-width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  color: white;
+  color: black;
+  background-color: white;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
-.upload-button {
-  padding: 100px 200px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 90px;
-  cursor: pointer;
-  align-self: center;
-}
-
-.upload-button:hover {
-  background-color: #218838;
+.input-field::placeholder {
+  color: #a9a9a9; /* Slightly dark grey */
 }
