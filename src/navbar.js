@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './navbar.css';
 
 const Navbar = ({ 
@@ -20,6 +21,9 @@ const Navbar = ({
         <li className='emoji' onClick={() => changeMood('chill')}>😎</li>
         <li className={showSideVideo2 ? 'active' : ''} onClick={toggleSideVideo2}>
           Toggle Side Video 2
+        </li>
+        <li>
+          <Link to="/uploadpage">Go to Upload Page</Link>
         </li>
       </ul>
     </div>
