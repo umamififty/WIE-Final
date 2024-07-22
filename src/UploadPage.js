@@ -22,7 +22,7 @@ function UploadPage() {
   };
 
   const handleUpload = () => {
-    const recipient = "is0700vx@ed.ritsumei.ac.jp"; // Replace with the actual recipient's email address
+    const recipient = "is0701fr@ed.ritsumei.ac.jp"; // Replace with the actual recipient's email address
     const subject = `VIDEO SUBMISSION: ${category}`;
     const body = `Title: ${videoName}\nLink: ${videoLink}\nCategory: ${category}`;
     const mailtoLink = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
