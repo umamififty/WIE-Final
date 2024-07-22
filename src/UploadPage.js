@@ -22,9 +22,10 @@ function UploadPage() {
   };
 
   const handleUpload = () => {
+    const recipient = "is0700vx@ed.ritsumei.ac.jp"; // Replace with the actual recipient's email address
     const subject = `VIDEO SUBMISSION: ${category}`;
     const body = `Title: ${videoName}\nLink: ${videoLink}\nCategory: ${category}`;
-    const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     // Open the default mail client
     window.location.href = mailtoLink;
@@ -68,7 +69,8 @@ function UploadPage() {
             <option value="">Select Category</option>
             <option value="happy">Happy</option>
             <option value="angry">Angry</option>
-            <option value="sad">Sad</option>
+            <option value="motivation">Motivation</option>
+            <option value="chill">Chill</option>
           </select>
         </div>
         <button onClick={handleUpload} className="upload-button">UPLOAD</button>
